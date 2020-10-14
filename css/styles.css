@@ -8,7 +8,7 @@
   --color-lose: #D94545;
   --color-start: #5b85b7;
   --color-neutral: #445069;
-  --color-neutral-light: #D2D2D2;
+  --color-neutral-light:  white;
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
@@ -28,6 +28,11 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+}
+
+body.dark{
+  background-color: black;
+
 }
 
 li, ol, ul {
@@ -69,6 +74,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-image: url('../images/background.jpg');
+//Added background image to game
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   height: 100%;
   max-height: 900px;
   text-align: center;
@@ -79,19 +88,39 @@ button {
   padding: 10px;
 }
 
+#phrase ul{
+  border-style: solid;
+  border-color: #99e699;
+  border-width: 10px;
+  border-radius: 10%;
+  background-color:  #ADD8E6;
+}
+
 #phrase ul li{
-  margin-top: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#phrase  li:first-child{
+  margin-left: 30px;
+}
+
+#phrase  li:last-child{
+  margin-right: 30px;
 }
 
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: white;
 }
 
 
 /* Phrase */
 
+#phrase{
+
+}
 .letter {
   font-size: var(--font-size-medium);
   height: 65px;
@@ -107,7 +136,20 @@ button {
   width: 15px;
 }
 
-
+//Added Empty letter for board
+.blank {
+  color: #8EA27B;
+  background-color: #8EA27B;
+  font-size: 20px;
+  height: 65px;
+  width: 65px;
+  padding: 20px 1px 0 1px;
+  margin-right: 2px;
+  border-radius: 5px;
+  animation-name: flash;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+}
 
 .show {
   color: #fff;
@@ -118,8 +160,17 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
+  animation-name: flash;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
+}
+
+// Modified example from https://www.w3schools.com/css/css3_animations.asp to flash correct letters
+@keyframes flash {
+  0%   {background-color: #4ac0d5;}
+  25%  {background-color: white;}
+  50%  {background-color: #4ac0d5;}
+  100% {background-color: white;}
 }
 
 
@@ -128,6 +179,10 @@ button {
 .keyrow {
   display: flex;
   justify-content: center;
+}
+
+.key:hover {
+  background-color: #757a94;
 }
 
 .chosen {
@@ -159,7 +214,6 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
-
 /* Overlay */
 
 #overlay {
@@ -175,12 +229,13 @@ button {
   border-radius: 5px;
 }
 
+
 .title {
   color: #FFF;
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #0e2ab3;
 }
 
 .start a {

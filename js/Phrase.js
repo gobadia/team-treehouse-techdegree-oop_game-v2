@@ -9,38 +9,37 @@
    }
 
    addPhraseToDisplay(){
-     let phraseSection = document.getElementById('phrase');
+     //get UL in the phrase section
+     let phraseSectionUL = document.getElementById('phrase').firstChild;
 
-     [...this.phrase].forEach(letter => {
+     //iterate over letters in selected Phrase to display them
+    [...this.phrase].forEach(letter => {
        const liElement = document.createElement('li');
+       //check for spaces
        if(letter === ' '){
          liElement.className = 'space';
-         phraseSection.appendChild(liElement);
-        // list+= 'li class="space"> </li>';
+         phraseSectionUL.appendChild(liElement);
        }
        else{
          liElement.className = `hide letter ${letter}`;
          liElement.innerText = `${letter}`;
-         phraseSection.appendChild(liElement);
-         //list+=`<li class="hide letter ${letter}">${letter}</li>`;
+         phraseSectionUL.appendChild(liElement);
         }
     });
-    //return list;
    }
 
    checkLetter(letter){
-     console.log('checkingLetter ' + this.phrase.indexOf(letter));
+     //if letter in phrase, return it's index to be able to show it
      return this.phrase.indexOf(letter);
    }
 
    showMatchedLetter(letter){
      const matching = document.getElementsByClassName(`hide letter ${letter}`);
-     console.log(matching.length);
      for(let i=matching.length; i>0; i--){
-       console.log('loop ' + i);
-       matching[i-1].className = `show letter ${letter}`;
+       matching[i-1].className = `draw show letter ${letter} `;
 
      }
    }
+
 
  }
