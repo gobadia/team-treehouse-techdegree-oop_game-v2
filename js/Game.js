@@ -25,15 +25,18 @@
    handleInteraction(button){
      const selectedLetter = button.innerText;
      //disable the letter in the keyboard after it's selected
-     button.disabled = true;
+
      //if letter is not in phrase, remove a life
      if(this.activePhrase.checkLetter(selectedLetter) === -1){
-       console.log('wrong letter');
-       button.classList.add('wrong');
-       this.removeLife();
+       if(!button.disabled){
+         button.disabled = true;
+         button.classList.add('wrong');
+         this.removeLife();
+       }
      }
      else{
        //if letter is in phrase, show it in phrase board
+       button.disabled = true;
        button.classList.add('chosen');
        this.activePhrase.showMatchedLetter(selectedLetter);
        // for every correct letter, check if leads to win
@@ -81,6 +84,7 @@
      }
      //show win/lose message on overlay after game over
      document.getElementById('overlay').style.display = 'block';
+     document.getElementById('btn__reset').style.display = 'block';
      document.getElementById('game-over-message').innerText = text;
   }
 
